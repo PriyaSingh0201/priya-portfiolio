@@ -1,23 +1,6 @@
 // Set current year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Hamburger menu toggle
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navMenu.classList.toggle('open');
-});
-
-// Close nav on link click (mobile)
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    navMenu.classList.remove('open');
-  });
-});
-
 // Theme toggle functionality
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
@@ -142,20 +125,27 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   }, 2000);
 });
 
-// Parallax effect for hero section (desktop only)
+// Parallax effect for hero section
 window.addEventListener('scroll', () => {
-  if (window.innerWidth > 768) {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-      hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
+  const scrolled = window.pageYOffset;
+  const hero = document.querySelector('.hero');
+  
+  if (hero) {
+    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
   }
 });
 
 // Add floating animation to project cards
 document.querySelectorAll('.project-card').forEach((card, index) => {
   card.style.animationDelay = `${index * 0.2}s`;
+  
+  card.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateY(-15px) scale(1.03)';
+  });
+  
+  card.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0) scale(1)';
+  });
 });
 
 // Add pulse animation to social links
