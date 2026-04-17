@@ -1049,37 +1049,117 @@ body::before {
 /* Responsive */
 @media (max-width: 768px) {
   .nav-menu {
+    display: none;
     flex-direction: column;
-    gap: 1rem;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--bg-secondary);
+    backdrop-filter: blur(20px);
+    padding: 1.5rem 2rem;
+    gap: 1.2rem;
+    z-index: 999;
+    border-bottom: 1px solid var(--border);
   }
-  
-  .hero-title {
-    font-size: 2rem;
+
+  .nav-menu.open {
+    display: flex;
   }
-  
-  .hero-subtitle {
-    font-size: 1.2rem;
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
   }
-  
+
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 8px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -8px); }
+
+  .hero {
+    padding: 6rem 1rem 2rem;
+    min-height: auto;
+  }
+
+  .hero-title { font-size: 2rem; }
+  .hero-subtitle { font-size: 1.1rem; }
+  .hero-description { font-size: 0.95rem; }
+
+  .photo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .laptop-container { display: none; }
+
   .section {
     padding: 3rem 1rem;
   }
-  
-  .projects-grid,
+
+  .section-title { font-size: 1.8rem; }
+
+  .education-timeline::before { left: 20px; }
+  .timeline-dot { left: 20px; }
+  .timeline-content {
+    width: calc(100% - 60px);
+    margin-left: 50px !important;
+    margin-right: 0 !important;
+    padding: 1.2rem;
+  }
+  .timeline-icon { font-size: 2rem; }
+  .timeline-content h3 { font-size: 1.1rem; }
+
+  .skills-container,
   .experience-container,
-  .skills-container {
+  .projects-grid,
+  .certificates-container {
     grid-template-columns: 1fr;
   }
-  
-  .skills-grid {
-    grid-template-columns: 1fr;
+
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .resume-download {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
-  
-  .laptop-container {
-    display: none;
+
+  .resume-btn {
+    margin: 0;
+    width: 80%;
+    text-align: center;
   }
+
+  .qr-card { width: 100%; max-width: 280px; }
+  .qr-img { width: 160px; height: 160px; }
+
+  .cert-body { padding: 1.2rem; }
+  .cert-body h3 { font-size: 1.1rem; }
+
+  .social-links a { width: 44px; height: 44px; font-size: 1rem; }
+
+  .contact-container { padding: 0 0.5rem; }
+
+  .footer { padding: 1.5rem 1rem; font-size: 0.9rem; }
 }
-/* AI Badge Styling */
+.hamburger {
+  display: none;
+}
 .ai-badge {
   background: linear-gradient(45deg, #ff6b9d, #8a2be2, #ff4081);
   background-size: 200% 200%;
