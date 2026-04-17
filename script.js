@@ -1,6 +1,23 @@
 // Set current year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('open');
+});
+
+// Close menu on nav link click
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('open');
+  });
+});
+
 // Theme toggle functionality
 const themeToggle = document.getElementById('themeToggle');
 const body = document.body;
